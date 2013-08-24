@@ -1,0 +1,53 @@
+{
+	"name" : "keeko/user",
+	"description" : "Keeko user module",
+	"type" : "keeko-module",
+	"license" : [
+		"MIT"
+	],
+	"require" : {
+		"php" : ">=5.4"
+	},
+	"require-dev" : {
+		"composer/composer" : "@dev",
+		"keeko/core" : "dev-master"
+	},
+	"autoload" : {
+		"psr-0" : {
+			"keeko\\user" : "src"
+		}
+	},
+	"extra" : {
+		"keeko" : {
+			"module" : {
+				"title" : "Keeko User Module",
+				"defaultAction" : "users",
+				"class" : "\\keeko\\user\\UserModule",
+				"actions" : {
+					"users" : {
+						"title" : "List Users",
+						"description" : "Lists all users",
+						"api" : true
+					},
+					"delete-user" : {
+						"title" : "Deletes a user",
+						"api" : true
+					},
+					"update-user" : {
+						"title" : "Updates a user",
+						"api" : true
+					},
+					"create-user" : {
+						"title" : "Creates a user",
+						"api" : true
+					},
+					"user" : {
+						"title" : "Reads a user",
+						"api" : true
+					}
+				}
+			}
+		},
+		"local" : "../../"
+	}
+}
