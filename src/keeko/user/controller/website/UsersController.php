@@ -9,10 +9,10 @@ class UsersController implements ControllerInterface {
 	use UsersActionTrait;
 	
 	/* (non-PHPdoc)
-	 * @see \keeko\core\action\ActionInterface::run()
+	 * @see \keeko\core\action\ControllerInterface::run()
 	 */
-	public function run(Request $request, Response $response) {
-		
+	public function run() {
+		return 'Hello World';
 	}
 	
 }
