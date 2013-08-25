@@ -1,7 +1,7 @@
 <?php
-namespace keeko\user\controller\website;
+namespace keeko\user\controllers\website;
 
-use keeko\user\action\UsersActionTrait;
+use keeko\user\actions\UsersActionTrait;
 use keeko\core\action\ControllerInterface;
 
 class UsersController implements ControllerInterface {
@@ -12,7 +12,7 @@ class UsersController implements ControllerInterface {
 	 * @see \keeko\core\action\ControllerInterface::run()
 	 */
 	public function run() {
-		return 'Hello World';
+		return $this->twig->render('users.twig');
 	}
 	
 }

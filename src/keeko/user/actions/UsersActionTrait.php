@@ -1,5 +1,5 @@
 <?php
-namespace keeko\user\action;
+namespace keeko\user\actions;
 
 use keeko\core\action\ActionTrait;
 
@@ -9,8 +9,11 @@ trait UsersActionTrait {
 	public function getData() {
 		
 	}
-	
+
 	protected function setDefaultParams(OptionsResolverInterface $resolver) {
-		
+		$resolver->setDefaults([
+				]);
+		// 		$resolver->setOptional([]);
+		// 		$resolver->setRequired([]);
 	}
 }
