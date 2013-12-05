@@ -2,15 +2,14 @@
 	"name" : "keeko/user",
 	"description" : "Keeko user module",
 	"type" : "keeko-module",
-	"license" : [
-		"MIT"
-	],
+	"license" : "MIT",
 	"require" : {
 		"php" : ">=5.4"
 	},
 	"require-dev" : {
 		"composer/composer" : "@dev",
-		"keeko/core" : "dev-master"
+		"keeko/core" : "dev-master",
+		"propel/propel" : "@dev"
 	},
 	"autoload" : {
 		"psr-0" : {
@@ -21,29 +20,75 @@
 		"keeko" : {
 			"module" : {
 				"title" : "Keeko User Module",
-				"defaultAction" : "users",
+				"default-action" : "users",
 				"class" : "\\keeko\\user\\UserModule",
 				"actions" : {
 					"users" : {
+						"class-prefix" : "user\\List",
 						"title" : "List Users",
 						"description" : "Lists all users",
 						"api" : true
 					},
 					"delete-user" : {
+						"class-prefix" : "user\\Delete",
 						"title" : "Deletes a user",
-						"api" : true
+						"api" : true,
+						"params" : {
+							"id" : {
+								"id" : true,
+								"title" : "User identificator",
+								"required" : true
+							}
+						}
 					},
 					"update-user" : {
+						"class-prefix" : "user\\Update",
 						"title" : "Updates a user",
-						"api" : true
+						"api" : true,
+						"params" : {
+							"id" : {
+								"id" : true,
+								"title" : "User identificator",
+								"required" : true
+							},
+							"mail" : {
+								"title" : "The user's email adress"
+							},
+							"given-name" : {
+								"title" : "The user's given name"
+							},
+							"family-name" : {
+								"title" : "The user's family name"
+							}
+						}
 					},
 					"create-user" : {
+						"class-prefix" : "user\\Create",
 						"title" : "Creates a user",
-						"api" : true
+						"api" : true,
+						"params" : {
+							"mail" : {
+								"title" : "The user's email adress"
+							},
+							"given-name" : {
+								"title" : "The user's given name"
+							},
+							"family-name" : {
+								"title" : "The user's family name"
+							}
+						}
 					},
 					"user" : {
+						"class-prefix" : "user\\Read",
 						"title" : "Reads a user",
-						"api" : true
+						"api" : true,
+						"params" : {
+							"id" : {
+								"id" : true,
+								"title" : "User identificator",
+								"required" : true
+							}
+						}
 					}
 				}
 			}
