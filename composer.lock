@@ -3,20 +3,23 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "848618cd51574cf5ac69015c6fc50fc6",
+    "hash": "9a00ed0d5e0c723eeb99ae693f1fdf8c",
     "packages": [
+
+    ],
+    "packages-dev": [
         {
             "name": "CarpeHora/ExtraPropertiesBehavior",
             "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Carpe-Hora/ExtraPropertiesBehavior.git",
-                "reference": "1.0.1"
+                "reference": "086309742153c1759d0e88a283cfb54603a6f9d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Carpe-Hora/ExtraPropertiesBehavior/zipball/1.0.1",
-                "reference": "1.0.1",
+                "url": "https://api.github.com/repos/Carpe-Hora/ExtraPropertiesBehavior/zipball/086309742153c1759d0e88a283cfb54603a6f9d0",
+                "reference": "086309742153c1759d0e88a283cfb54603a6f9d0",
                 "shasum": ""
             },
             "require": {
@@ -56,12 +59,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "6f8b2579971414a3e09d615149791759fe06ac02"
+                "reference": "61c0127f05a3795861afa10102a9b7dc46725cea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/6f8b2579971414a3e09d615149791759fe06ac02",
-                "reference": "6f8b2579971414a3e09d615149791759fe06ac02",
+                "url": "https://api.github.com/repos/composer/composer/zipball/61c0127f05a3795861afa10102a9b7dc46725cea",
+                "reference": "61c0127f05a3795861afa10102a9b7dc46725cea",
                 "shasum": ""
             },
             "require": {
@@ -117,20 +120,20 @@
                 "dependency",
                 "package"
             ],
-            "time": "2013-08-20 14:27:53"
+            "time": "2013-08-23 09:59:26"
         },
         {
             "name": "justinrainbow/json-schema",
             "version": "1.1.0",
             "source": {
                 "type": "git",
-                "url": "git://github.com/justinrainbow/json-schema.git",
-                "reference": "v1.1.0"
+                "url": "https://github.com/justinrainbow/json-schema.git",
+                "reference": "05ff6d8d79fe3ad190b0663d80d3f9deee79416c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/justinrainbow/json-schema/archive/v1.1.0.zip",
-                "reference": "v1.1.0",
+                "url": "https://api.github.com/repos/justinrainbow/json-schema/zipball/05ff6d8d79fe3ad190b0663d80d3f9deee79416c",
+                "reference": "05ff6d8d79fe3ad190b0663d80d3f9deee79416c",
                 "shasum": ""
             },
             "require": {
@@ -176,16 +179,16 @@
         },
         {
             "name": "keeko/composer-installer",
-            "version": "0.17",
+            "version": "0.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/keeko/composer-installer.git",
-                "reference": "0.17"
+                "reference": "d3518772f7678e8394665493f11499d64f84ea05"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/keeko/composer-installer/zipball/0.17",
-                "reference": "0.17",
+                "url": "https://api.github.com/repos/keeko/composer-installer/zipball/d3518772f7678e8394665493f11499d64f84ea05",
+                "reference": "d3518772f7678e8394665493f11499d64f84ea05",
                 "shasum": ""
             },
             "require": {
@@ -214,7 +217,7 @@
                 }
             ],
             "description": "Keeko component installer",
-            "time": "2013-08-17 22:56:44"
+            "time": "2013-08-24 16:35:37"
         },
         {
             "name": "keeko/core",
@@ -222,12 +225,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/keeko/core.git",
-                "reference": "84610d717fce4f658f1ea903aff9a97c527fa57a"
+                "reference": "3dfab44b8d0f5aa1bc4fae9bd4a7c4a6c8923511"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/keeko/core/zipball/84610d717fce4f658f1ea903aff9a97c527fa57a",
-                "reference": "84610d717fce4f658f1ea903aff9a97c527fa57a",
+                "url": "https://api.github.com/repos/keeko/core/zipball/3dfab44b8d0f5aa1bc4fae9bd4a7c4a6c8923511",
+                "reference": "3dfab44b8d0f5aa1bc4fae9bd4a7c4a6c8923511",
                 "shasum": ""
             },
             "require": {
@@ -261,20 +264,20 @@
                 }
             ],
             "description": "Keeko core",
-            "time": "2013-08-18 00:51:55"
+            "time": "2013-08-25 12:31:17"
         },
         {
             "name": "phing/phing",
-            "version": "2.5.0",
+            "version": "2.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phingofficial/phing.git",
-                "reference": "2.5.0"
+                "reference": "5500c5012520203523fd4ea05dabf1f51c331267"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phingofficial/phing/zipball/2.5.0",
-                "reference": "2.5.0",
+                "url": "https://api.github.com/repos/phingofficial/phing/zipball/5500c5012520203523fd4ea05dabf1f51c331267",
+                "reference": "5500c5012520203523fd4ea05dabf1f51c331267",
                 "shasum": ""
             },
             "require": {
@@ -313,7 +316,7 @@
                 "task",
                 "tool"
             ],
-            "time": "2013-02-16 14:23:57"
+            "time": "2013-08-21 08:31:44"
         },
         {
             "name": "propel/propel1",
@@ -321,16 +324,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/propelorm/Propel.git",
-                "reference": "1.6.9"
+                "reference": "8b6a304acddafe83b7ae780a7860601a08a1e252"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/propelorm/Propel/zipball/1.6.9",
-                "reference": "1.6.9",
+                "url": "https://api.github.com/repos/propelorm/Propel/zipball/8b6a304acddafe83b7ae780a7860601a08a1e252",
+                "reference": "8b6a304acddafe83b7ae780a7860601a08a1e252",
                 "shasum": ""
             },
             "require": {
-                "phing/phing": ">=2.4,<3.0",
+                "phing/phing": "~2.4",
                 "php": ">=5.2.4"
             },
             "bin": [
@@ -373,20 +376,20 @@
                 "orm",
                 "persistence"
             ],
-            "time": "2013-03-31 17:20:51"
+            "time": "2013-03-31 17:25:18"
         },
         {
             "name": "seld/jsonlint",
             "version": "1.1.1",
             "source": {
                 "type": "git",
-                "url": "http://github.com/Seldaek/jsonlint",
-                "reference": "1.1.1"
+                "url": "https://github.com/Seldaek/jsonlint.git",
+                "reference": "2b5b57008ec93148fa46110d42c7a201a6677fe0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/jsonlint/zipball/1.1.1",
-                "reference": "1.1.1",
+                "url": "https://api.github.com/repos/Seldaek/jsonlint/zipball/2b5b57008ec93148fa46110d42c7a201a6677fe0",
+                "reference": "2b5b57008ec93148fa46110d42c7a201a6677fe0",
                 "shasum": ""
             },
             "require": {
@@ -477,12 +480,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "v2.3.3"
+                "reference": "290fe87d3618ce49c2caf7c456402affbd9917ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/v2.3.3",
-                "reference": "v2.3.3",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/290fe87d3618ce49c2caf7c456402affbd9917ac",
+                "reference": "290fe87d3618ce49c2caf7c456402affbd9917ac",
                 "shasum": ""
             },
             "require": {
@@ -577,12 +580,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Finder.git",
-                "reference": "v2.3.3"
+                "reference": "b251476db261edb54bb1d7c6b8be6ae49ff9a371"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Finder/zipball/v2.3.3",
-                "reference": "v2.3.3",
+                "url": "https://api.github.com/repos/symfony/Finder/zipball/b251476db261edb54bb1d7c6b8be6ae49ff9a371",
+                "reference": "b251476db261edb54bb1d7c6b8be6ae49ff9a371",
                 "shasum": ""
             },
             "require": {
@@ -674,12 +677,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/OptionsResolver.git",
-                "reference": "v2.3.3"
+                "reference": "61502f498ecc3c8bcfeabe0dccddb9cd44aad9ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/OptionsResolver/zipball/v2.3.3",
-                "reference": "v2.3.3",
+                "url": "https://api.github.com/repos/symfony/OptionsResolver/zipball/61502f498ecc3c8bcfeabe0dccddb9cd44aad9ae",
+                "reference": "61502f498ecc3c8bcfeabe0dccddb9cd44aad9ae",
                 "shasum": ""
             },
             "require": {
@@ -726,12 +729,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Process.git",
-                "reference": "v2.3.3"
+                "reference": "dd780ac1fa0452567c261237798c4ec64f1337cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Process/zipball/v2.3.3",
-                "reference": "v2.3.3",
+                "url": "https://api.github.com/repos/symfony/Process/zipball/dd780ac1fa0452567c261237798c4ec64f1337cf",
+                "reference": "dd780ac1fa0452567c261237798c4ec64f1337cf",
                 "shasum": ""
             },
             "require": {
@@ -831,12 +834,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Yaml.git",
-                "reference": "v2.3.3"
+                "reference": "3837ccd0830ef44ed5c5844403bf6f69f7998758"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Yaml/zipball/v2.3.3",
-                "reference": "v2.3.3",
+                "url": "https://api.github.com/repos/symfony/Yaml/zipball/3837ccd0830ef44ed5c5844403bf6f69f7998758",
+                "reference": "3837ccd0830ef44ed5c5844403bf6f69f7998758",
                 "shasum": ""
             },
             "require": {
@@ -877,12 +880,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Twig.git",
-                "reference": "v1.13.2"
+                "reference": "6d6a1009427d1f398c9d40904147bf9f723d5755"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Twig/zipball/v1.13.2",
-                "reference": "v1.13.2",
+                "url": "https://api.github.com/repos/fabpot/Twig/zipball/6d6a1009427d1f398c9d40904147bf9f723d5755",
+                "reference": "6d6a1009427d1f398c9d40904147bf9f723d5755",
                 "shasum": ""
             },
             "require": {
@@ -920,9 +923,6 @@
             ],
             "time": "2013-08-03 15:35:31"
         }
-    ],
-    "packages-dev": [
-
     ],
     "aliases": [
 

@@ -1,7 +1,7 @@
 <?php
 namespace keeko\user\controllers\website;
 
-use keeko\user\actions\UsersActionTrait;
+use keeko\user\common\user\ListActionTrait;
 use keeko\core\action\ControllerInterface;
 
 class UsersController implements ControllerInterface {
