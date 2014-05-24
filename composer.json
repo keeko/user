@@ -12,8 +12,8 @@
 		"propel/propel" : "@dev"
 	},
 	"autoload" : {
-		"psr-0" : {
-			"keeko\\user" : "src"
+		"psr-4" : {
+			"keeko\\user\\" : "src"
 		}
 	},
 	"extra" : {
@@ -24,64 +24,13 @@
 				"class" : "\\keeko\\user\\UserModule",
 				"actions" : {
 					"users" : {
-						"class-prefix" : "user\\List",
+						"class" : "\\keeko\\user\\action\\UserListAction",
 						"title" : "List Users",
-						"description" : "Lists all users",
-						"api" : true
-					},
-					"delete-user" : {
-						"class-prefix" : "user\\Delete",
-						"title" : "Deletes a user",
-						"api" : true,
-						"params" : {
-							"id" : {
-								"id" : true,
-								"title" : "User identificator",
-								"required" : true
-							}
-						}
-					},
-					"update-user" : {
-						"class-prefix" : "user\\Update",
-						"title" : "Updates a user",
-						"api" : true,
-						"params" : {
-							"id" : {
-								"id" : true,
-								"title" : "User identificator",
-								"required" : true
-							},
-							"mail" : {
-								"title" : "The user's email adress"
-							},
-							"given-name" : {
-								"title" : "The user's given name"
-							},
-							"family-name" : {
-								"title" : "The user's family name"
-							}
-						}
-					},
-					"create-user" : {
-						"class-prefix" : "user\\Create",
-						"title" : "Creates a user",
-						"api" : true,
-						"params" : {
-							"mail" : {
-								"title" : "The user's email adress"
-							},
-							"given-name" : {
-								"title" : "The user's given name"
-							},
-							"family-name" : {
-								"title" : "The user's family name"
-							}
-						}
+						"description" : "Lists all users"
 					},
 					"user" : {
-						"class-prefix" : "user\\Read",
+						"class-prefix" : "\\keeko\\user\\action\\ReadAction",
 						"title" : "Reads a user",
-						"api" : true,
 						"params" : {
 							"id" : {
 								"id" : true,
@@ -89,6 +38,75 @@
 								"required" : true
 							}
 						}
+					},
+					"user-create" : {
+						"class-prefix" : "\\keeko\\user\\action\\CreateAction",
+						"title" : "Creates a user",
+						"params" : {
+							"mail" : {
+								"title" : "The user's email adress"
+							},
+							"given-name" : {
+								"title" : "The user's given name"
+							},
+							"family-name" : {
+								"title" : "The user's family name"
+							}
+						}
+					},
+					"user-update" : {
+						"class-prefix" : "\\keeko\\user\\action\\UpdateAction",
+						"title" : "Updates a user",
+						"params" : {
+							"id" : {
+								"id" : true,
+								"title" : "User identificator",
+								"required" : true
+							},
+							"mail" : {
+								"title" : "The user's email adress"
+							},
+							"given-name" : {
+								"title" : "The user's given name"
+							},
+							"family-name" : {
+								"title" : "The user's family name"
+							}
+						}
+					},
+					"user-delete" : {
+						"class" : "\\keeko\\user\\action\\DeleteAction",
+						"title" : "Deletes a user",
+						"params" : {
+							"id" : {
+								"id" : true,
+								"title" : "User identificator",
+								"required" : true
+							}
+						}
+					}
+				},
+				"api" : {
+					"routes" : {
+						"users" : [{
+								"method" : "get",
+								"action" : "users"
+							}, {
+								"method" : "post",
+								"action" : "user-create"
+							}
+						],
+						"users/:id" : [{
+								"method" : "get",
+								"action" : "user-read"
+							}, {
+								"method" : "patch",
+								"action" : "user-update"
+							}, {
+								"method" : "delete",
+								"action" : "user-delete"
+							}
+						]
 					}
 				}
 			}
