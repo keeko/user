@@ -24,23 +24,25 @@
 				"class" : "\\keeko\\user\\UserModule",
 				"actions" : {
 					"users" : {
-						"class" : "\\keeko\\user\\action\\UserListAction",
+						"class" : "\\keeko\\user\\action\\ListAction",
 						"title" : "List Users",
-						"description" : "Lists all users"
+						"description" : "Lists all users",
+						"response" : {
+							"json" : "\\keeko\\user\\response\\ListJsonResponse"
+						}
 					},
 					"user" : {
-						"class-prefix" : "\\keeko\\user\\action\\ReadAction",
+						"class" : "\\keeko\\user\\action\\ReadAction",
 						"title" : "Reads a user",
 						"params" : {
 							"id" : {
-								"id" : true,
 								"title" : "User identificator",
 								"required" : true
 							}
 						}
 					},
 					"user-create" : {
-						"class-prefix" : "\\keeko\\user\\action\\CreateAction",
+						"class" : "\\keeko\\user\\action\\CreateAction",
 						"title" : "Creates a user",
 						"params" : {
 							"mail" : {
@@ -55,11 +57,10 @@
 						}
 					},
 					"user-update" : {
-						"class-prefix" : "\\keeko\\user\\action\\UpdateAction",
+						"class" : "\\keeko\\user\\action\\UpdateAction",
 						"title" : "Updates a user",
 						"params" : {
 							"id" : {
-								"id" : true,
 								"title" : "User identificator",
 								"required" : true
 							},
@@ -79,7 +80,6 @@
 						"title" : "Deletes a user",
 						"params" : {
 							"id" : {
-								"id" : true,
 								"title" : "User identificator",
 								"required" : true
 							}
@@ -87,26 +87,179 @@
 					}
 				},
 				"api" : {
-					"routes" : {
-						"users" : [{
-								"method" : "get",
-								"action" : "users"
-							}, {
-								"method" : "post",
-								"action" : "user-create"
+				    "swaggerVersion": "1.2",
+					"resourcePath" : "/user",
+					"apis" : [{
+							"path" : "/users",
+							"operations" : [{
+									"method" : "GET",
+									"summary" : "Retrieves all users",
+									"nickname" : "users",
+									"type" : "PagedUsers",
+									"responseMessages" : [{
+											"code" : 403,
+											"message" : "Permission Denied"
+										}
+									]
+								}, {
+									"method" : "POST",
+									"summary" : "Create a User",
+									"nickname" : "user-create",
+									"type" : "User",
+									"parameters" : [{
+											"name" : "body",
+											"description" : "The new user object",
+											"required" : true,
+											"type" : "User",
+											"paramType" : "body"
+										}
+									],
+									"responseMessages" : [{
+											"code" : 403,
+											"message" : "Permission Denied"
+										}, {
+											"code" : 500,
+											"message" : "Something was wrong"
+										}
+									]
+								}
+							]
+						}, {
+							"path" : "/users/{id}",
+							"operations" : [{
+									"method" : "GET",
+									"summary" : "Reads a User",
+									"nickname" : "user",
+									"type" : "User",
+									"parameters" : [{
+											"name" : "id",
+											"description" : "The user id",
+											"required" : true,
+											"type": "id",
+											"paramType" : "path"
+										}
+									],
+									"responseMessages" : [{
+											"code" : 403,
+											"message" : "Permission Denied"
+										}, {
+											"code" : 500,
+											"message" : "Something was wrong"
+										}, {
+											"code" : 400,
+											"message" : "Invalid ID supplied"
+										}, {
+											"code" : 404,
+											"message" : "No user found"
+										}
+									]
+								}, {
+									"method" : "PATCH",
+									"summary" : "Updates a user",
+									"nickname" : "user-update",
+									"type" : "User",
+									"parameters" : [{
+											"name" : "id",
+											"description" : "The user id",
+											"required" : true,
+											"type": "id",
+											"paramType" : "path"
+										}
+									],
+									"responseMessages" : [{
+											"code" : 403,
+											"message" : "Permission Denied"
+										}, {
+											"code" : 500,
+											"message" : "Something was wrong"
+										}, {
+											"code" : 400,
+											"message" : "Invalid ID supplied"
+										}, {
+											"code" : 404,
+											"message" : "No user found"
+										}
+									]
+								}, {
+									"method" : "DELETE",
+									"action" : "user-delete",
+									"summary" : "Deletes a user",
+									"nickname" : "user-delete",
+									"type" : "string",
+									"parameters" : [{
+											"name" : "id",
+											"description" : "The user id",
+											"required" : true,
+											"type": "id",
+											"paramType" : "path"
+										}
+									],
+									"responseMessages" : [{
+											"code" : 403,
+											"message" : "Permission Denied"
+										}, {
+											"code" : 500,
+											"message" : "Something was wrong"
+										}, {
+											"code" : 400,
+											"message" : "Invalid ID supplied"
+										}, {
+											"code" : 404,
+											"message" : "No user found"
+										}
+									]
+								}
+							]
+						}
+					],
+					"models" : {
+						"Meta" : {
+							"id" : "Meta",
+							"properties" : {
+								"total" : {
+									"type" : "integer"
+								},
+								"next" : {
+									"type" : "string"
+								},
+								"previous" : {
+									"type" : "string"
+								},
+								"first" : {
+									"type" : "string"
+								},
+								"last" : {
+									"type" : "string"
+								}
 							}
-						],
-						"users/:id" : [{
-								"method" : "get",
-								"action" : "user-read"
-							}, {
-								"method" : "patch",
-								"action" : "user-update"
-							}, {
-								"method" : "delete",
-								"action" : "user-delete"
+						},
+						"PagedUsers" : {
+							"id" : "PagedUsers",
+							"properties" : {
+								"users" : {
+									"type" : "array",
+									"items" : {
+										"$ref" : "User"
+									}
+								},
+								"meta" : {
+									"type" : "Meta"
+								}
 							}
-						]
+						},
+						"User" : {
+							"id" : "User",
+							"properties" : {
+								"id" : {
+									"type" : "integer",
+									"required" : true
+								},
+								"mail" : {
+									"type" : "string",
+									"required" : true
+								}
+							}
+						}
 					}
 				}
 			}
