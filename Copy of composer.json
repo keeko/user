@@ -3,6 +3,11 @@
 	"description" : "Keeko user module",
 	"type" : "keeko-module",
 	"license" : "MIT",
+	"authors" : [{
+			"name" : "gossi",
+			"homepage" : "http://gos.si"
+		}
+	],
 	"require" : {
 		"php" : ">=5.4"
 	},
@@ -19,9 +24,10 @@
 	"extra" : {
 		"keeko" : {
 			"module" : {
-				"title" : "Keeko User Module",
-				"default-action" : "users",
+				"title" : "Users",
 				"class" : "\\keeko\\user\\UserModule",
+				"slug": "user",
+				"default-action": "users",
 				"actions" : {
 					"users" : {
 						"class" : "\\keeko\\user\\action\\ListAction",
@@ -33,61 +39,41 @@
 					},
 					"user" : {
 						"class" : "\\keeko\\user\\action\\ReadAction",
-						"title" : "Reads a user",
-						"params" : {
-							"id" : {
-								"title" : "User identificator",
-								"required" : true
-							}
-						}
+						"title" : "Reads a user"
 					},
 					"user-create" : {
 						"class" : "\\keeko\\user\\action\\CreateAction",
-						"title" : "Creates a user",
-						"params" : {
-							"mail" : {
-								"title" : "The user's email adress"
-							},
-							"given-name" : {
-								"title" : "The user's given name"
-							},
-							"family-name" : {
-								"title" : "The user's family name"
-							}
-						}
+						"title" : "Creates a user"
 					},
 					"user-update" : {
 						"class" : "\\keeko\\user\\action\\UpdateAction",
-						"title" : "Updates a user",
-						"params" : {
-							"id" : {
-								"title" : "User identificator",
-								"required" : true
-							},
-							"mail" : {
-								"title" : "The user's email adress"
-							},
-							"given-name" : {
-								"title" : "The user's given name"
-							},
-							"family-name" : {
-								"title" : "The user's family name"
-							}
-						}
+						"title" : "Updates a user"
 					},
 					"user-delete" : {
 						"class" : "\\keeko\\user\\action\\DeleteAction",
-						"title" : "Deletes a user",
-						"params" : {
-							"id" : {
-								"title" : "User identificator",
-								"required" : true
-							}
+						"title" : "Deletes a user"
+					}
+				},
+				"codegen" : {
+					"user" : {
+						"write" : {
+							"conversion" : {
+								"password" : "password_hash($v, PASSWORD_BCRYPT)"
+							},
+							"filter" : [
+								"password_recover_code",
+								"password_recover_time"
+							]
+						},
+						"read" : {
+							"filter" : [
+								"password"
+							]
 						}
 					}
 				},
 				"api" : {
-				    "swaggerVersion": "1.2",
+					"swaggerVersion" : "1.2",
 					"resourcePath" : "/user",
 					"apis" : [{
 							"path" : "/users",
@@ -135,7 +121,7 @@
 											"name" : "id",
 											"description" : "The user id",
 											"required" : true,
-											"type": "id",
+											"type" : "id",
 											"paramType" : "path"
 										}
 									],
@@ -162,7 +148,7 @@
 											"name" : "id",
 											"description" : "The user id",
 											"required" : true,
-											"type": "id",
+											"type" : "id",
 											"paramType" : "path"
 										}
 									],
@@ -185,12 +171,12 @@
 									"action" : "user-delete",
 									"summary" : "Deletes a user",
 									"nickname" : "user-delete",
-									"type" : "string",
+									"type" : "User",
 									"parameters" : [{
 											"name" : "id",
 											"description" : "The user id",
 											"required" : true,
-											"type": "id",
+											"type" : "id",
 											"paramType" : "path"
 										}
 									],

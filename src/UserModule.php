@@ -3,17 +3,27 @@ namespace keeko\user;
 
 use keeko\core\module\AbstractModule;
 
-class UserModule extends AbstractModule {
+/**
+ */
+class UserModule extends AbstractModule
+{
+    /**
+     */
+    public function install()
+    {
+    }
 
-	public function install() {
-		
-	}
-	
-	public function uninstall() {
-		
-	}
-	
-	public function update($from, $to) {
-		
-	}
+    /**
+     */
+    public function uninstall()
+    {
+    }
+
+    /**
+     * @param mixed $from
+     * @param mixed $to
+     */
+    public function update($from, $to)
+    {
+    }
 }
