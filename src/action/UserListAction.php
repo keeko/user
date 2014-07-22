@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use keeko\core\model\User;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use keeko\core\model\UserQuery;
 
 /**
  * List all users
