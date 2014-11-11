@@ -13,25 +13,23 @@ use Propel\Runtime\Map\TableMap;
  * 
  * @author gossi <http://gos.si>
  */
-abstract class AbstractUserResponse extends AbstractResponse
-{
-    /**
-     * Automatically generated method, will be overridden
-     * 
-     * @param array $user
-     */
-    protected function filter(array $user)
-    {
-        return FilterUtils::blacklistFilter($user, ['password', 'password_recover_code', 'password_recover_time']);
-    }
+abstract class AbstractUserResponse extends AbstractResponse {
 
-    /**
-     * Automatically generated method, will be overridden
-     * 
-     * @param User $user
-     */
-    protected function userToArray(User $user)
-    {
-        return $this->filter($user->toArray(TableMap::TYPE_STUDLYPHPNAME));
-    }
+	/**
+	 * Automatically generated method, will be overridden
+	 * 
+	 * @param array $user
+	 */
+	protected function filter(array $user) {
+		return FilterUtils::blacklistFilter($user, ['password', 'passwordRecoverCode', 'passwordRecoverTime']);
+	}
+
+	/**
+	 * Automatically generated method, will be overridden
+	 * 
+	 * @param User $user
+	 */
+	protected function userToArray(User $user) {
+		return $this->filter($user->toArray(TableMap::TYPE_CAMELNAME));
+	}
 }

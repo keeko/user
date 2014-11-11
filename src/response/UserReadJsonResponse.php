@@ -7,21 +7,20 @@ use keeko\core\model\User;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
- * Json Response for Reads an user
+ * JsonResponse for Reads an user
  * 
  * @author gossi <http://gos.si>
  */
-class UserReadJsonResponse extends AbstractUserResponse
-{
-    /**
-     * Automatically generated method, will be overridden
-     * 
-     * @param Request $request
-     * @return Response
-     */
-    public function run(Request $request)
-    {
-        // return response
-        return new JsonResponse($this->userToArray($this->data));
-    }
+class UserReadJsonResponse extends AbstractUserResponse {
+
+	/**
+	 * Automatically generated method, will be overridden
+	 * 
+	 * @param Request $request
+	 * @return Response
+	 */
+	public function run(Request $request) {
+		// return response
+		return new JsonResponse($this->userToArray($this->data));
+	}
 }
