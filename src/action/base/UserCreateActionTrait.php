@@ -28,7 +28,7 @@ trait UserCreateActionTrait {
 		// hydrate
 		$user = HydrateUtils::hydrate($data, new User(), ['id', 'login_name', 'password' => function($v) {
 			return password_hash($v, PASSWORD_BCRYPT);
-		}, 'given_name', 'family_name', 'display_name', 'email', 'country_iso_nr', 'subdivision_id', 'address', 'address2', 'birthday', 'sex', 'city', 'postal_code', 'password_recover_code', 'password_recover_time', 'location_status', 'latitude', 'longitude']);
+		}, 'given_name', 'family_name', 'display_name', 'email', 'birthday', 'sex', 'password_recover_code', 'password_recover_time']);
 
 		// validate
 		if (!$user->validate()) {

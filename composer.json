@@ -36,35 +36,50 @@
                         "title": "List all users",
                         "response": {
                             "json": "keeko\\user\\response\\UserListJsonResponse"
-                        }
+                        },
+                        "acl": [
+                            "admin"
+                        ]
                     },
                     "user-create": {
                         "class": "keeko\\user\\action\\UserCreateAction",
                         "title": "Creates an user",
                         "response": {
                             "json": "keeko\\user\\response\\UserCreateJsonResponse"
-                        }
+                        },
+                        "acl": [
+                            "admin"
+                        ]
                     },
                     "user-read": {
                         "class": "keeko\\user\\action\\UserReadAction",
                         "title": "Reads an user",
                         "response": {
                             "json": "keeko\\user\\response\\UserReadJsonResponse"
-                        }
+                        },
+                        "acl": [
+                            "admin"
+                        ]
                     },
                     "user-update": {
                         "class": "keeko\\user\\action\\UserUpdateAction",
                         "title": "Updates an user",
                         "response": {
                             "json": "keeko\\user\\response\\UserUpdateJsonResponse"
-                        }
+                        },
+                        "acl": [
+                            "admin"
+                        ]
                     },
                     "user-delete": {
                         "class": "keeko\\user\\action\\UserDeleteAction",
                         "title": "Deletes an user",
                         "response": {
                             "json": "keeko\\user\\response\\UserDeleteJsonResponse"
-                        }
+                        },
+                        "acl": [
+                            "admin"
+                        ]
                     }
                 },
                 "codegen": {
@@ -257,44 +272,17 @@
                                 "email": {
                                     "type": "string"
                                 },
-                                "country_iso_nr": {
-                                    "type": "int"
-                                },
-                                "subdivision_id": {
-                                    "type": "int"
-                                },
-                                "address": {
-                                    "type": "string"
-                                },
-                                "address2": {
-                                    "type": "string"
-                                },
                                 "birthday": {
                                     "type": "string"
                                 },
                                 "sex": {
                                     "type": "int"
                                 },
-                                "city": {
-                                    "type": "string"
-                                },
-                                "postal_code": {
-                                    "type": "string"
-                                },
                                 "password_recover_code": {
                                     "type": "string"
                                 },
                                 "password_recover_time": {
                                     "type": "string"
-                                },
-                                "location_status": {
-                                    "type": "int"
-                                },
-                                "latitude": {
-                                    "type": "double"
-                                },
-                                "longitude": {
-                                    "type": "double"
                                 }
                             }
                         },
@@ -319,49 +307,22 @@
                                 "email": {
                                     "type": "string"
                                 },
-                                "country_iso_nr": {
-                                    "type": "int"
-                                },
-                                "subdivision_id": {
-                                    "type": "int"
-                                },
-                                "address": {
-                                    "type": "string"
-                                },
-                                "address2": {
-                                    "type": "string"
-                                },
                                 "birthday": {
                                     "type": "string"
                                 },
                                 "sex": {
                                     "type": "int"
                                 },
-                                "city": {
+                                "password_recover_code": {
                                     "type": "string"
                                 },
-                                "postal_code": {
+                                "password_recover_time": {
                                     "type": "string"
-                                },
-                                "location_status": {
-                                    "type": "int"
-                                },
-                                "latitude": {
-                                    "type": "double"
-                                },
-                                "longitude": {
-                                    "type": "double"
                                 },
                                 "created_at": {
                                     "type": "string"
                                 },
                                 "updated_at": {
-                                    "type": "string"
-                                },
-                                "password_recover_code": {
-                                    "type": "string"
-                                },
-                                "password_recover_time": {
                                     "type": "string"
                                 }
                             }
