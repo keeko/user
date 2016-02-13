@@ -3,19 +3,25 @@ namespace keeko\user\action\base;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use keeko\core\model\User;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use keeko\core\model\UserQuery;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
- * Base methods for Reads an user
+ * Base methods for keeko\user\action\UserReadAction
  * 
- * This code is automatically created
+ * This code is automatically created. Modifications will probably be overwritten.
  * 
- * @author gossi <http://gos.si>
+ * @author gossi
  */
 trait UserReadActionTrait {
+
+	/**
+	 * @param OptionsResolver $resolver
+	 */
+	public function configureParams(OptionsResolver $resolver) {
+		$resolver->setRequired(['id']);
+	}
 
 	/**
 	 * Automatically generated run method
@@ -33,15 +39,7 @@ trait UserReadActionTrait {
 			throw new ResourceNotFoundException('user not found.');
 		}
 
-		// set response and go
-		$this->response->setData($user);
-		return $this->response->run($request);
-	}
-
-	/**
-	 * @param OptionsResolverInterface $resolver
-	 */
-	public function setDefaultParams(OptionsResolverInterface $resolver) {
-		$resolver->setRequired(['id']);
+		// run response
+		return $this->response->run($request, $user);
 	}
 }

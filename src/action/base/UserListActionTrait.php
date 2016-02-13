@@ -3,18 +3,27 @@ namespace keeko\user\action\base;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use keeko\core\model\User;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use keeko\core\model\UserQuery;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
- * Base methods for List all users
+ * Base methods for keeko\user\action\UserListAction
  * 
- * This code is automatically created
+ * This code is automatically created. Modifications will probably be overwritten.
  * 
- * @author gossi <http://gos.si>
+ * @author gossi
  */
 trait UserListActionTrait {
+
+	/**
+	 * @param OptionsResolver $resolver
+	 */
+	public function configureParams(OptionsResolver $resolver) {
+		$resolver->setDefaults([
+			'page' => 1,
+			'per_page' => 50,
+		]);
+	}
 
 	/**
 	 * Automatically generated run method
@@ -28,18 +37,7 @@ trait UserListActionTrait {
 		$perPage = $this->getParam('per_page');
 		$user = UserQuery::create()->paginate($page, $perPage);
 
-		// set response and go
-		$this->response->setData($user);
-		return $this->response->run($request);
-	}
-
-	/**
-	 * @param OptionsResolverInterface $resolver
-	 */
-	public function setDefaultParams(OptionsResolverInterface $resolver) {
-		$resolver->setDefaults([
-			'page' => 1,
-			'per_page' => 50,
-		]);
+		// run response
+		return $this->response->run($request, $user);
 	}
 }

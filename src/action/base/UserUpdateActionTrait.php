@@ -3,21 +3,27 @@ namespace keeko\user\action\base;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use keeko\core\model\User;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use keeko\core\model\UserQuery;
 use keeko\core\exceptions\ValidationException;
 use keeko\core\utils\HydrateUtils;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
- * Base methods for Updates an user
+ * Base methods for keeko\user\action\UserUpdateAction
  * 
- * This code is automatically created
+ * This code is automatically created. Modifications will probably be overwritten.
  * 
- * @author gossi <http://gos.si>
+ * @author gossi
  */
 trait UserUpdateActionTrait {
+
+	/**
+	 * @param OptionsResolver $resolver
+	 */
+	public function configureParams(OptionsResolver $resolver) {
+		$resolver->setRequired(['id']);
+	}
 
 	/**
 	 * Automatically generated run method
@@ -35,15 +41,17 @@ trait UserUpdateActionTrait {
 			throw new ResourceNotFoundException('user not found.');
 		}
 
-		// set response and go
-		$this->response->setData($user);
-		return $this->response->run($request);
-	}
+		// hydrate
+		$data = json_decode($request->getContent(), true);
+		$user = HydrateUtils::hydrate($data, $user, ['id', 'login_name', 'password' => function($v) {
+			return password_hash($v, PASSWORD_BCRYPT);
+		}, 'given_name', 'family_name', 'display_name', 'email', 'birthday', 'sex']);
 
-	/**
-	 * @param OptionsResolverInterface $resolver
-	 */
-	public function setDefaultParams(OptionsResolverInterface $resolver) {
-		$resolver->setRequired(['id']);
+		// validate
+		if (!$user->validate()) {
+			throw new ValidationException($user->getValidationFailures());
+		} else {
+			return $this->response->run($request, $user);
+		}
 	}
 }
