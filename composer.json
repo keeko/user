@@ -19,7 +19,8 @@
 		"keeko/composer-installer": "*"
 	},
 	"require-dev": {
-		"keeko/core": "dev-master",
+		"keeko/framework": "dev-master",
+		"keeko/core": "@dev",
 		"composer/composer": "@dev",
 		"propel/propel": "@dev",
 		"puli/repository": "@beta",
@@ -34,59 +35,44 @@
 				"title": "Users",
 				"class": "keeko\\user\\UserModule",
 				"actions": {
-					"user-list": {
-						"title": "List all users",
-						"description": "",
-						"class": "keeko\\user\\action\\UserListAction",
+					"dashboard": {
+						"title": "Account Dashboard",
+						"class": "keeko\\user\\action\\DashboardAction",
 						"acl": [
-							"admin"
+							"user"
 						],
 						"response": {
-							"json": "keeko\\user\\response\\UserListJsonResponse"
+							"html": "keeko\\user\\responder\\DashboardHtmlResponder"
 						}
 					},
-					"user-create": {
-						"title": "Creates an user",
-						"description": "",
-						"class": "keeko\\user\\action\\UserCreateAction",
+					"index": {
+						"title": "Account index",
+						"class": "keeko\\user\\action\\IndexAction",
 						"acl": [
-							"admin"
+							"guest"
 						],
 						"response": {
-							"json": "keeko\\user\\response\\UserCreateJsonResponse"
+							"html": "keeko\\user\\responder\\IndexHtmlResponder"
 						}
 					},
-					"user-read": {
-						"title": "Reads an user",
-						"description": "",
-						"class": "keeko\\user\\action\\UserReadAction",
+					"user-widget": {
+						"title": "User Widget",
+						"class": "keeko\\user\\action\\UserWidgetAction",
 						"acl": [
-							"admin"
+							"guest"
 						],
 						"response": {
-							"json": "keeko\\user\\response\\UserReadJsonResponse"
+							"html": "keeko\\user\\responder\\UserWidgetHtmlResponder"
 						}
 					},
-					"user-update": {
-						"title": "Updates an user",
-						"description": "",
-						"class": "keeko\\user\\action\\UserUpdateAction",
+					"account": {
+						"title": "Account",
+						"class": "keeko\\user\\action\\AccountAction",
 						"acl": [
-							"admin"
+							"guest"
 						],
 						"response": {
-							"json": "keeko\\user\\response\\UserUpdateJsonResponse"
-						}
-					},
-					"user-delete": {
-						"title": "Deletes an user",
-						"description": "",
-						"class": "keeko\\user\\action\\UserDeleteAction",
-						"acl": [
-							"admin"
-						],
-						"response": {
-							"json": "keeko\\user\\response\\UserDeleteJsonResponse"
+							"html": "keeko\\user\\responder\\AccountHtmlResponder"
 						}
 					}
 				}

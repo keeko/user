@@ -1,6 +1,9 @@
 {
     "version": "1.0",
     "name": "keeko/user",
+    "path-mappings": {
+        "/keeko/user": "res/"
+    },
     "config": {
         "bootstrap-file": "vendor/autoload.php"
     },
@@ -41,6 +44,11 @@
         },
         "keeko/core": {
             "install-path": "vendor/keeko/core",
+            "installer": "composer",
+            "env": "dev"
+        },
+        "keeko/framework": {
+            "install-path": "vendor/keeko/framework",
             "installer": "composer",
             "env": "dev"
         },

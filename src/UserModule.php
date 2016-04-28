@@ -1,7 +1,8 @@
 <?php
 namespace keeko\user;
 
-use keeko\core\package\AbstractModule;
+use keeko\framework\foundation\AbstractModule;
+use keeko\user\widget\WidgetFactory;
 
 /**
  * Users
@@ -26,5 +27,9 @@ class UserModule extends AbstractModule {
 	 * @param mixed $to
 	 */
 	public function update($from, $to) {
+	}
+	
+	public function getWidgetFactory() {
+		return new WidgetFactory($this->getServiceContainer());
 	}
 }
