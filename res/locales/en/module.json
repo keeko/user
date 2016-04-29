@@ -9,14 +9,18 @@
 	"slug.logout": "logout",
 	"slug.forget-password": "forget-password",
 	"slug.register": "register",
-	"slug.change-password": "change-password",
-	"slug.profile": "profile",
+	"slug.activities": "activities",
+	"slug.settings": "settings",
+	"slug.settings.profile": "profile",
+	"slug.settings.change-password": "change-password",
+	"slug.settings.sessions": "sessions",
 	
-	"widget.login": "Login",
-	"widget.forget-password": "Forget Password",
-	"widget.dashboard": "Dashboard",
-	"widget.profile": "Profile",
-	"widget.change-password": "Change Password",
-	"widget.settings": "Settings",
-	"widget.logout": "Logout"
+	"login": "Login",
+	"logout": "Logout",
+	"forget-password": "Forget Password",
+	"dashboard": "Dashboard",
+	"activities": "Activities",
+	"settings": "Settings",
+	"profile": "Profile",
+	"change-password": "Change Password"
 }

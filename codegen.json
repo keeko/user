@@ -1,6 +1,7 @@
 {
 	"models": {
 	    "user" : {
+	    	"tag": "user",
 			"write" : {
 				"conversion" : {
 					"password" : "password_hash($v, PASSWORD_BCRYPT)"
@@ -17,6 +18,51 @@
 					"password_recover_time"
 				]
 			}
+		},
+		"user_group": {
+			"tag": "user"
+		},
+		"group": {
+			"tag": "group"
+		},
+		"group_action": {
+			"tag": "security"
+		},
+		"auth": {
+			"tag": "auth"
+		},
+		"package": {
+			"tag": "foundation"
+		},
+		"application": {
+			"tag": "foundation"
+		},
+		"application_uri": {
+			"tag": "foundation"
+		},
+		"module": {
+			"tag": "foundation"
+		},
+		"action": {
+			"tag": "foundation"
+		},
+		"extension": {
+			"tag": "foundation"
+		},
+		"preference": {
+			"tag": "foundation"
+		},
+		"api": {
+			"tag": "foundation"
+		},
+		"session": {
+			"tag": "security"
+		},
+		"activity": {
+			"tag": "user"
+		},
+		"activity_object": {
+			"tag": "user"
 		}
 	}
 }

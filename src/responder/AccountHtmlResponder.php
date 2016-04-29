@@ -21,6 +21,6 @@ class AccountHtmlResponder extends AbstractResponder {
 	 * @return Response
 	 */
 	public function run(Request $request, PayloadInterface $payload = null) {
-		return new Response($this->render('/keeko/user/account.twig', $payload->get()));
+		return new Response($this->render('/keeko/user/templates/account.twig', $payload->get()));
 	}
 }

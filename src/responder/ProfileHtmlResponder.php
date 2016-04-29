@@ -7,11 +7,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Automatically generated HtmlResponder for Account Dashboard
+ * Automatically generated HtmlResponder for Account Profile
  * 
  * @author gossi
  */
-class DashboardHtmlResponder extends AbstractResponder {
+class ProfileHtmlResponder extends AbstractResponder {
 
 	/**
 	 * Automatically generated run method
@@ -21,6 +21,6 @@ class DashboardHtmlResponder extends AbstractResponder {
 	 * @return Response
 	 */
 	public function run(Request $request, PayloadInterface $payload = null) {
-		return new Response($this->render('/keeko/user/templates/dashboard.twig', $payload->get()));
+		return new Response($this->render('/keeko/user/templates/profile.twig'));
 	}
 }

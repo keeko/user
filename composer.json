@@ -1,79 +1,149 @@
 {
-	"name": "keeko/user",
-	"description": "Keeko user module",
-	"type": "keeko-module",
-	"license": "MIT",
-	"authors": [
-		{
-			"name": "gossi",
-			"homepage": "http://gos.si"
+	"name" : "keeko/user",
+	"description" : "Keeko user module",
+	"type" : "keeko-module",
+	"license" : "MIT",
+	"authors" : [{
+			"name" : "gossi",
+			"homepage" : "http://gos.si"
 		}
 	],
-	"autoload": {
-		"psr-4": {
-			"keeko\\user\\": "src"
+	"autoload" : {
+		"psr-4" : {
+			"keeko\\user\\" : "src"
 		}
 	},
-	"require": {
-		"php": ">=5.4",
-		"keeko/composer-installer": "*"
+	"require" : {
+		"php" : ">=5.4",
+		"keeko/composer-installer" : "*"
 	},
-	"require-dev": {
-		"keeko/framework": "dev-master",
-		"keeko/core": "@dev",
-		"composer/composer": "@dev",
-		"propel/propel": "@dev",
-		"puli/repository": "@beta",
-		"puli/composer-plugin": "@beta",
-		"puli/twig-extension": "@beta",
-		"puli/url-generator": "@beta",
-		"puli/discovery": "@beta"
+	"require-dev" : {
+		"keeko/framework" : "dev-master",
+		"keeko/core" : "@dev",
+		"composer/composer" : "@dev",
+		"propel/propel" : "@dev",
+		"puli/repository" : "@beta",
+		"puli/composer-plugin" : "@beta",
+		"puli/twig-extension" : "@beta",
+		"puli/url-generator" : "@beta",
+		"puli/discovery" : "@beta"
 	},
-	"extra": {
-		"keeko": {
-			"module": {
-				"title": "Users",
-				"class": "keeko\\user\\UserModule",
-				"actions": {
-					"dashboard": {
-						"title": "Account Dashboard",
-						"class": "keeko\\user\\action\\DashboardAction",
-						"acl": [
+	"extra" : {
+		"keeko" : {
+			"module" : {
+				"title" : "Users",
+				"class" : "keeko\\user\\UserModule",
+				"extension-points" : {
+					"keeko.user.settings" : "schema/settings.json"
+				},
+				"extensions" : {
+					"keeko.user.settings" : [{
+							"profile" : {
+								"label" : "profile",
+								"icon" : "user",
+								"slug" : "slug.settings.profile",
+								"domain" : "keeko.user",
+								"module" : "keeko/user",
+								"action" : "profile"
+							}
+						}, {
+							"change-password" : {
+								"label" : "change-password",
+								"icon" : "lock",
+								"slug" : "slug.settings.change-password",
+								"domain" : "keeko.user",
+								"module" : "keeko/user",
+								"action" : "change-password"
+							}
+						}
+					]
+				},
+				"actions" : {
+					"dashboard" : {
+						"title" : "Account Dashboard",
+						"class" : "keeko\\user\\action\\DashboardAction",
+						"acl" : [
 							"user"
 						],
-						"response": {
-							"html": "keeko\\user\\responder\\DashboardHtmlResponder"
-						}
+						"response" : {
+							"html" : "keeko\\user\\responder\\DashboardHtmlResponder"
+						},
+						"styles" : [
+							"/keeko/user/public/css/account.css"
+						]
 					},
-					"index": {
-						"title": "Account index",
-						"class": "keeko\\user\\action\\IndexAction",
-						"acl": [
+					"index" : {
+						"title" : "Account index",
+						"class" : "keeko\\user\\action\\IndexAction",
+						"acl" : [
 							"guest"
 						],
-						"response": {
-							"html": "keeko\\user\\responder\\IndexHtmlResponder"
+						"response" : {
+							"html" : "keeko\\user\\responder\\IndexHtmlResponder"
 						}
 					},
-					"user-widget": {
-						"title": "User Widget",
-						"class": "keeko\\user\\action\\UserWidgetAction",
-						"acl": [
+					"user-widget" : {
+						"title" : "User Widget",
+						"class" : "keeko\\user\\action\\UserWidgetAction",
+						"acl" : [
 							"guest"
 						],
-						"response": {
-							"html": "keeko\\user\\responder\\UserWidgetHtmlResponder"
+						"response" : {
+							"html" : "keeko\\user\\responder\\UserWidgetHtmlResponder"
+						},
+						"styles" : [
+							"/keeko/user/public/css/user-widget.css"
+						]
+					},
+					"account" : {
+						"title" : "Account",
+						"class" : "keeko\\user\\action\\AccountAction",
+						"acl" : [
+							"guest"
+						],
+						"response" : {
+							"html" : "keeko\\user\\responder\\AccountHtmlResponder"
 						}
 					},
-					"account": {
-						"title": "Account",
-						"class": "keeko\\user\\action\\AccountAction",
-						"acl": [
+					"login" : {
+						"title" : "Account Login",
+						"class" : "keeko\\user\\action\\LoginAction",
+						"acl" : [
 							"guest"
 						],
-						"response": {
-							"html": "keeko\\user\\responder\\AccountHtmlResponder"
+						"response" : {
+							"html" : "keeko\\user\\responder\\LoginHtmlResponder"
 						}
+					},
+					"logout" : {
+						"title" : "Account Logout",
+						"class" : "keeko\\user\\action\\LogoutAction",
+						"acl" : [
+							"guest"
+						]
+					},
+					"profile" : {
+						"title" : "Account Profile",
+						"class" : "keeko\\user\\action\\ProfileAction",
+						"acl" : [
+							"user"
+						],
+						"response" : {
+							"html" : "keeko\\user\\responder\\ProfileHtmlResponder"
+						}
+					},
+					"settings" : {
+						"title" : "Account Settings",
+						"class" : "keeko\\user\\action\\SettingsAction",
+						"acl" : [
+							"user"
+						],
+						"response" : {
+							"html" : "keeko\\user\\responder\\SettingsHtmlResponder"
+						},
+						"styles": [
+						    "/keeko/user/public/css/account.css"
+						]
 					}
 				}
 			}

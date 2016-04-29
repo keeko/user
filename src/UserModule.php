@@ -11,6 +11,8 @@ use keeko\user\widget\WidgetFactory;
  * @author gossi <http://gos.si>
  */
 class UserModule extends AbstractModule {
+	
+	const EXT_SETTINGS = 'keeko.user.settings';
 
 	/**
 	 */

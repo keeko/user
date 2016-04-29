@@ -1,8 +1,11 @@
 {
 	"swagger": "2.0",
+	"info": {
+		"title": "Users API"
+	},
 	"paths": {
 		"/users": {
-			"GET": {
+			"get": {
 				"description": "List all users",
 				"operationId": "user-list",
 				"responses": {
@@ -12,9 +15,12 @@
 							"$ref": "#/definitions/PagedUsers"
 						}
 					}
-				}
+				},
+				"tags": [
+					"user"
+				]
 			},
-			"POST": {
+			"post": {
 				"description": "Creates an user",
 				"operationId": "user-create",
 				"parameters": [
@@ -32,11 +38,14 @@
 					"201": {
 						"description": "user created"
 					}
-				}
+				},
+				"tags": [
+					"user"
+				]
 			}
 		},
 		"/users/{id}": {
-			"GET": {
+			"get": {
 				"description": "Reads an user",
 				"operationId": "user-read",
 				"parameters": [
@@ -61,33 +70,12 @@
 					"404": {
 						"description": "No user found"
 					}
-				}
+				},
+				"tags": [
+					"user"
+				]
 			},
-			"DELETE": {
-				"description": "Deletes an user",
-				"operationId": "user-delete",
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"required": true,
-						"description": "The user id",
-						"type": "integer"
-					}
-				],
-				"responses": {
-					"204": {
-						"description": "user deleted"
-					},
-					"400": {
-						"description": "Invalid ID supplied"
-					},
-					"404": {
-						"description": "No user found"
-					}
-				}
-			},
-			"PATCH": {
+			"patch": {
 				"description": "Updates an user",
 				"operationId": "user-update",
 				"parameters": [
@@ -112,11 +100,41 @@
 					"404": {
 						"description": "No user found"
 					}
-				}
+				},
+				"tags": [
+					"user"
+				]
+			},
+			"delete": {
+				"description": "Deletes an user",
+				"operationId": "user-delete",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"description": "The user id",
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"204": {
+						"description": "user deleted"
+					},
+					"400": {
+						"description": "Invalid ID supplied"
+					},
+					"404": {
+						"description": "No user found"
+					}
+				},
+				"tags": [
+					"user"
+				]
 			}
 		},
 		"/users/{id}/relationship/groups": {
-			"GET": {
+			"get": {
 				"description": "Reads the relationship of user to group",
 				"operationId": "user-to-group-relationship-read",
 				"parameters": [
@@ -135,51 +153,12 @@
 					"404": {
 						"description": "No user found"
 					}
-				}
+				},
+				"tags": [
+					"user"
+				]
 			},
-			"POST": {
-				"description": "Adds group as relationship to user",
-				"operationId": "user-to-group-relationship-add",
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"required": true,
-						"description": "The user id",
-						"type": "integer"
-					}
-				],
-				"responses": {
-					"400": {
-						"description": "Invalid ID supplied"
-					},
-					"404": {
-						"description": "No user found"
-					}
-				}
-			},
-			"DELETE": {
-				"description": "Removes group as relationship of user",
-				"operationId": "user-to-group-relationship-remove",
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"required": true,
-						"description": "The user id",
-						"type": "integer"
-					}
-				],
-				"responses": {
-					"400": {
-						"description": "Invalid ID supplied"
-					},
-					"404": {
-						"description": "No user found"
-					}
-				}
-			},
-			"PATCH": {
+			"patch": {
 				"description": "Updates the relationship of user to group",
 				"operationId": "user-to-group-relationship-update",
 				"parameters": [
@@ -198,12 +177,63 @@
 					"404": {
 						"description": "No user found"
 					}
-				}
+				},
+				"tags": [
+					"user"
+				]
+			},
+			"post": {
+				"description": "Adds group as relationship to user",
+				"operationId": "user-to-group-relationship-add",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"description": "The user id",
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"400": {
+						"description": "Invalid ID supplied"
+					},
+					"404": {
+						"description": "No user found"
+					}
+				},
+				"tags": [
+					"user"
+				]
+			},
+			"delete": {
+				"description": "Removes group as relationship of user",
+				"operationId": "user-to-group-relationship-remove",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"description": "The user id",
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"400": {
+						"description": "Invalid ID supplied"
+					},
+					"404": {
+						"description": "No user found"
+					}
+				},
+				"tags": [
+					"user"
+				]
 			}
 		}
 	},
 	"definitions": {
-		"Meta": {
+		"PagedMeta": {
 			"type": "object",
 			"properties": {
 				"total": {
@@ -285,7 +315,7 @@
 									"type": "string"
 								},
 								"sex": {
-									"type": "int"
+									"type": "integer"
 								}
 							}
 						},
@@ -351,7 +381,7 @@
 									"type": "string"
 								},
 								"sex": {
-									"type": "int"
+									"type": "integer"
 								},
 								"created_at": {
 									"type": "string"
@@ -388,26 +418,11 @@
 					}
 				}
 			}
-		},
-		"PagedMeta": {
-			"type": "object",
-			"properties": {
-				"total": {
-					"type": "integer"
-				},
-				"first": {
-					"type": "integer"
-				},
-				"next": {
-					"type": "integer"
-				},
-				"previous": {
-					"type": "integer"
-				},
-				"last": {
-					"type": "integer"
-				}
-			}
 		}
-	}
+	},
+	"tags": [
+		{
+			"name": "user"
+		}
+	]
 }

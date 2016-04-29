@@ -1,9 +1,16 @@
 <?php
 namespace keeko\user\action;
 
+use keeko\framework\domain\payload\Blank;
 use keeko\framework\foundation\AbstractAction;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Matcher\UrlMatcher;
+use Symfony\Component\Routing\RequestContext;
+use Symfony\Component\Routing\Route;
+use Symfony\Component\Routing\RouteCollection;
+use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 
 /**
  * Account
@@ -13,7 +20,7 @@ use Symfony\Component\HttpFoundation\Response;
  * @author gossi
  */
 class AccountAction extends AbstractAction {
-
+	
 	/**
 	 * Automatically generated run method
 	 * 
@@ -21,23 +28,75 @@ class AccountAction extends AbstractAction {
 	 * @return Response
 	 */
 	public function run(Request $request) {
-		return $this->responder->run($request);
+		$prefs = $this->getServiceContainer()->getPreferenceLoader()->getSystemPreferences();
+		$routes = $this->generateRoutes();
+		$response = new Response();
+		$context = new RequestContext($prefs->getAccountUrl());
+		$matcher = new UrlMatcher($routes, $context);
+		$payload = [];
+		
+		try {
+			$path = $this->getServiceContainer()->getKernel()->getApplication()->getDestinationPath();
+			$path = str_replace('//', '/', '/' . $path);
+			$match = $matcher->match($path);
+			$route = $match['_route'];
+			$module = $this->getModule();
+			$auth = $this->getServiceContainer()->getAuthManager();
+			$action = null;
+				
+			switch ($route) {
+				case 'index':
+					if ($auth->isRecognized()) {
+						$action = $module->loadAction('dashboard', 'html');
+					} else {
+						$action = $module->loadAction('index', 'html');
+					}
+					break;
+						
+				case 'login':
+					$action = $module->loadAction('login', 'html');
+					break;
+					
+				case 'settings':
+					$action = $module->loadAction('settings', 'html');
+					$action->setSection($match['section']);
+					break;
+						
+				case 'logout':
+					$action = $module->loadAction('logout');
+					break;
+			}
 
-		// alternatively:
+			$kernel = $this->getServiceContainer()->getKernel();
+			$response = $kernel->handle($action, $request);
+			
+			if ($response instanceof RedirectResponse) {
+				return $response;
+			}
 
-		// 1) get data:
-		// $data = Json::decode($request->getContent());
-		//
-		// -- or -- an id:
-		// $id = $this->getParam('id');
+			$payload = [
+				'main' => $response->getContent(),
+			];
+		} catch (ResourceNotFoundException $e) {
+			$response->setStatusCode(Response::HTTP_NOT_FOUND);
+			
+			return $response;
+		}
 
-		// 2) instantiate your domain
-		// $domain = new YourDomain($this->getServiceContainer());
+		return $this->responder->run($request, new Blank($payload));
+	}
+	
+	private function generateRoutes() {
+		$translator = $this->getServiceContainer()->getTranslator();
+		$routes = new RouteCollection();
+		$routes->add('index', new Route('/'));
+		$routes->add('register', new Route('/' . $translator->trans('slug.register', [], 'keeko.user')));
+		$routes->add('login', new Route('/' . $translator->trans('slug.login', [], 'keeko.user')));
+		$routes->add('logout', new Route('/' . $translator->trans('slug.logout', [], 'keeko.user')));
+		$routes->add('forget-password', new Route('/' . $translator->trans('slug.forget-password', [], 'keeko.user')));
 
-		// 3) run domain and store payload
-		// $payload = $domain->yourMethod($id, $data);
-
-		// 4) return response with payload
-		// return $this->responder->run($request, $payload);
+		$routes->add('settings', new Route('/' . $translator->trans('slug.settings', [], 'keeko.user') . '/{section}'));
+		
+		return $routes;
 	}
 }
